@@ -1,0 +1,24 @@
+1.create single column with city and state
+datafile["city_state"] = datafile["city"] + datafile["state"]
+
+2. make a list out of city state column
+city_state=datafile[city_state"].to_list()
+
+3. Install geopy:
+pip install geopy 
+
+4. call Nominatim package
+from geopy.geocoders import Nominatim
+
+5.access Open Street Map API via Nominatim to do geocoding for team locations
+geo=Nominatim(user_agent = "nba_map")
+Latitude=[]
+Longitude=[]
+for index, s in enumerate(city_state):
+	l1 = geo.geocode(x, timeout=None)
+	if l1 is None:
+		Latitidue.append('not found')
+		Longitude.append('not found')
+	else:
+		Latitude.append(l1.latitude)
+		Longitude.append(11.longitude)
